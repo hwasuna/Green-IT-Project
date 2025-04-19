@@ -6,6 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <script>
+        fetch('http://localhost:3000/api/test')
+            .then(res=>res.json())
+            .then(data=>{
+                document.body.innerHTML += `<h1> ${data.message} </h1>`
+            })
+            .catch(err => console.log('Error', err))
+    </script>
 </body>
 </html>
