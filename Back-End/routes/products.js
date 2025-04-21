@@ -7,7 +7,7 @@ import db from "./db.js";
 // Creating a mini express app to handle a route concerning products
 const router = express.Router();
 
-// Defining the endpoint for products list
+// Defining a GET (http method) to display all products
 router.get('/', (req, res) => {
     db.all('SELECT * FROM products', [], (err, rows) => {
         if (err) {
@@ -37,5 +37,25 @@ router.post('/', (req, res)=>{
     });
 });
 
+// Defining a DELETE (http method) to delete a product
+router.delete('/:id', (req, res)=>{
+
+    const productId = req.params.id;
+    const sql = 'DELETE FROM products WHERE id = ?'
+
+    db.run(sql, [productId], function(err){
+        if (err) {
+            console.error('Delete error:', err.message)
+            return res.status(500).json({ error: 'Failed to delete product '});
+        }
+
+        if (this.changes === 0) {
+            return res.status(404).json({error: 'Product not found'});
+        }
+
+        res.json({message: `Product with ID ${productId} deleted.`});
+    });
+});
+
 // Exporting this router to index.js to be called 
-export default router
+export default router;
