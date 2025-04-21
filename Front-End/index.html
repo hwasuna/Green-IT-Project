@@ -6,13 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <script>
-        fetch('http://localhost:3000/api/test')
-            .then(res=>res.json())
-            .then(data=>{
-                document.body.innerHTML += `<h1> ${data.message} </h1>`
-            })
-            .catch(err => console.log('Error', err))
-    </script>
+
+    <h2>Add Product</h2>
+    <form id="productForm" >
+        <input type="text" placeholder="Name" id="name" required>
+        <input type="text" placeholder="Description" id="description" required>
+        <input type="text" placeholder="Category" id="category" required> 
+        <input type="number" placeholder="Price" id="price" required>
+        <input type="number" placeholder="Seller ID" id="seller_id" required>
+        <button type="submit"> Add Product </button>
+    </form>
+
+    <script src="script.js"></script>
+
 </body>
 </html>
