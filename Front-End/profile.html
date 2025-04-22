@@ -1,61 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <title>Profile</title>
-        <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
-    </head>
-    <body>
-        <header>
-            
-            <h1>ÉcoCommerce</h1>
-            <p>Le e-commerce responsable</p>
-        </header>
-        <nav>
-            <a href="index.html">Home Page</a>
-            <a href="catalogue.html">Produits</a>
-            <a href="profile.html">Profile</a>
-          </nav>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Profile</title>
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1>EcoBazaar</h1>
+        <p>Your ethical and sustainable e-commerce platform</p>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="catalogue.html">Products</a>
+        <a href="profile.html">Profile</a>
+    </nav>
 
-          <div class="auth-container">
-            <div class="auth-box">
-                <h2>Se connecter</h2>
+    <div class="container-centered">
+        <div class="auth-container">
+            <!-- Login form -->
+            <div class="auth-box" id="loginBox">
+                <h2>Login</h2>
                 <form id="loginForm">
                     <div class="input-group">
                         <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" placeholder="Entrez votre email" required>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required>
                     </div>
                     <div class="input-group">
-                        <label for="loginPassword">Mot de passe</label>
-                        <input type="password" id="loginPassword" placeholder="Entrez votre mot de passe" required>
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required>
                     </div>
-                    <button type="submit" class="btn">Se connecter</button>
-                    <p>Pas encore de compte ? <a href="javascript:void(0)" onclick="toggleForm('signup')">S'inscrire</a></p>
+                    <button type="submit" class="btn">Login</button>
+                    <p>Don't have an account yet? <a href="javascript:void(0)" onclick="toggleForm('signup')">Sign up</a></p>
                 </form>
             </div>
-    
+
+            <!-- Signup form -->
             <div class="auth-box" id="signupBox" style="display: none;">
-                <h2>S'inscrire</h2>
+                <h2>Sign Up</h2>
                 <form id="signupForm">
                     <div class="input-group">
                         <label for="signupEmail">Email</label>
-                        <input type="email" id="signupEmail" placeholder="Entrez votre email" required>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required>
                     </div>
                     <div class="input-group">
-                        <label for="signupUsername">Nom d'utilisateur</label>
-                        <input type="text" id="signupUsername" placeholder="Choisissez un nom d'utilisateur" required>
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" placeholder="Choose a username" required>
                     </div>
                     <div class="input-group">
-                        <label for="signupPassword">Mot de passe</label>
-                        <input type="password" id="signupPassword" placeholder="Choisissez un mot de passe" required>
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Choose a password" required>
                     </div>
-                    <button type="submit" class="btn">S'inscrire</button>
-                    <p>Déjà un compte ? <a href="javascript:void(0)" onclick="toggleForm('login')">Se connecter</a></p>
+                    <button type="submit" class="btn">Sign Up</button>
+                    <p>Already have an account? <a href="javascript:void(0)" onclick="toggleForm('login')">Log in</a></p>
                 </form>
             </div>
         </div>
+    </div>
 
-    </body>
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p>
+    </footer>
+</body>
 </html>
