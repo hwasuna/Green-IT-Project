@@ -26,3 +26,16 @@ document.getElementById('productForm').addEventListener('submit', function (e) {
             alert('Something went wrong')
         })
 })
+
+function toggleForm(formType) {
+    const loginBox = document.getElementById('loginBox');
+    const signupBox = document.getElementById('signupBox');
+
+    if (formType === 'signup') {
+        loginBox.style.display = 'none';
+        signupBox.style.display = 'block';
+    } else {
+        loginBox.style.display = 'block';
+        signupBox.style.display = 'none';
+    }
+}
