@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+
 
     <h2>Add Product</h2>
     <form id="productForm" >
@@ -16,6 +18,46 @@
         <input type="number" placeholder="Seller ID" id="seller_id" required>
         <button type="submit"> Add Product </button>
     </form>
+
+    <header>
+        <h1>ÉcoCommerce</h1>
+        <p>Le e-commerce responsable</p>
+    </header>
+      
+      <nav>
+        <a href="#produits">Produits</a>
+        <a href="#panier">Panier</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+      
+      <div class="container" id="produits">
+        <h2>Nos Produits</h2>
+        <div class="product">
+          <h3>Savon Bio</h3>
+          <p>Catégorie: Hygiène</p>
+          <p>Prix: 5.00 €</p>
+          <p>Disponible: Oui</p>
+          <button>Ajouter au panier</button>
+        </div>
+        <div class="product">
+          <h3>Gourde Inox</h3>
+          <p>Catégorie: Accessoires</p>
+          <p>Prix: 15.00 €</p>
+          <p>Disponible: Oui</p>
+          <button>Ajouter au panier</button>
+        </div>
+      </div>
+      
+      <div class="container" id="panier">
+        <h2>Mon Panier</h2>
+        <div class="cart-item">
+          <p>Gourde Inox - 15.00 €</p>
+          <button>Supprimer</button>
+        </div>
+        <button>Passer commande</button>
+      </div>
+      
+
 
     <script src="script.js"></script>
 
