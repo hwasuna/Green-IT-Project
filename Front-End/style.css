@@ -190,3 +190,7 @@ a:hover {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.cart-summary{
+    margin-top: 20px;
+}
