@@ -39,3 +39,29 @@ function toggleForm(formType) {
         signupBox.style.display = 'none';
     }
 }
+
+document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+  
+    const loginData = {
+      email: document.getElementById('loginEmail').value,
+      password: document.getElementById('loginPassword').value
+    };
+  
+    fetch('http://localhost:3000/api/users/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(loginData)
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log('Login successful:', data);
+      alert('Welcome ' + data.user.username + '!');
+      localStorage.setItem('user', JSON.stringify(data.user)); // ✅ Save logged user
+      window.location.href = 'catalogue.html'; // Redirect after login
+    })
+    .catch(err => {
+      console.error('Login error:', err);
+      alert('Invalid login credentials.');
+    });
+  });
