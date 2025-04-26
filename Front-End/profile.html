@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="style.css">
     <title>Profile</title>
     <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
-    <script src="script.js"></script>
 </head>
 <body>
     <header>
@@ -17,10 +16,19 @@
         <a href="home.html">Home</a>
         <a href="catalogue.html">Products</a>
         <a href="profile.html">Profile</a>
+        <a href="cart.html">View My Cart</a>
     </nav>
+ 
 
     <div class="container-centered">
         <div class="auth-container">
+            <!-- Profile Information Display -->
+            <div class="auth-box" id="profileBox" style="display: none;">
+                <h2>Your Profile</h2>
+                <p><strong>Username:</strong> <span id="username"></span></p>
+                <p><strong>Email:</strong> <span id="email"></span></p>
+                <button id="logoutBtn">Logout</button>
+            </div>   
             <!-- Login form -->
             <div class="auth-box" id="loginBox">
                 <h2>Login</h2>
@@ -59,10 +67,13 @@
                 </form>
             </div>
         </div>
-    </div>
+    </div> 
 
     <footer>
         <p>&copy; 2025 EcoBazaar - All rights reserved</p>
     </footer>
+    <script src="script.js"></script>
+    <script src="catalogue.js"></script>
+    <script src="cart.js"></script>
 </body>
 </html>
