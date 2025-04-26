@@ -1,41 +1,29 @@
-const produits = [
-    {
-        nom: "Savon Bio",
-        description: "Savon naturel à base d’huile d’olive.",
-        categorie: "Hygiène",
-        prix: 5.0,
-        disponible: true
-    },
-    {
-        nom: "Gourde Inox",
-        description: "Gourde écologique 500ml",
-        categorie: "Accessoires",
-        prix: 15.0,
-        disponible: true
-    },
-    {
-        nom: "Sac en toile",
-        description: "Sac réutilisable pour courses",
-        categorie: "Textile",
-        prix: 7.5,
-        disponible: false
-    }
-];
-
-const container = document.getElementById('catalogueContainer');
-
-produits.forEach(produit => {
-    const card = document.createElement('div');
-    card.className = 'product-card';
-
-    card.innerHTML = `
-        <h3>${produit.nom}</h3>
-        <p><strong>Description :</strong> ${produit.description}</p>
-        <p><strong>Catégorie :</strong> ${produit.categorie}</p>
-        <p><strong>Prix :</strong> ${produit.prix.toFixed(2)} €</p>
-        <p><strong>Disponible :</strong> ${produit.disponible ? 'Oui' : 'Non'}</p>
-        <button ${!produit.disponible ? 'disabled' : ''}>Ajouter au panier</button>
-    `;
-
-    container.appendChild(card);
-});
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('http://localhost:3000/api/products')
+      .then(response => response.json())
+      .then(produits => {
+        const productList = document.querySelector('.products-list');
+  
+        if (produits.length === 0) {
+          productList.innerHTML = '<p>No products available yet.</p>';
+          return;
+        }
+  
+        produits.forEach(produit => {
+          const div = document.createElement('div');
+          div.classList.add('product');
+  
+          div.innerHTML = `
+            <h3>${produit.name}</h3>
+            <p><strong>Category:</strong> ${produit.category}</p>
+            <p><strong>Description:</strong> ${produit.description}</p>
+            <p><strong>Price:</strong> $${produit.price}</p>
+          `;
+  
+          productList.appendChild(div);
+        });
+      })
+      .catch(error => {
+        console.error('Error fetching products:', error);
+      });
+  });
