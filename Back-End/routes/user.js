@@ -35,3 +35,5 @@ router.post('/login', (req, res) => {
     res.json({ message: 'Login successful', user });
   });
 });
+
+export default router;
