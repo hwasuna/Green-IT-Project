@@ -20,6 +20,9 @@ const port = 3000;
 import productsRoutes from './routes/products.js';
 app.use('/api/products', productsRoutes);
 
+import userRoutes from './routes/user.js';
+app.use('/api/users', userRoutes)
+
 // Testing the communication between the front-end and back-end
 app.get('/api/test', (req, res)=>{
     res.json({message: "Ecobazaar back-end is working"});
@@ -35,6 +38,7 @@ app.get('/', (req, res) => {
         <body>
             <h1> Welcome to Ecobazaar Back-end </h1>
             <p> This is your API. Use /api/products to see product data </p>
+            <p> This is your API. Use /api/users to see user data </p>
         </body>
     </html>
     `);
