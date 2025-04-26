@@ -19,3 +19,19 @@ router.post('/register', (req, res) => {
       res.status(201).json({ id: this.lastID, username, email });
     });
   });
+
+router.post('/login', (req, res) => {
+  const { email, password } = req.body;
+
+  const sql = `SELECT * FROM users WHERE email = ? AND password = ?`;
+  db.get(sql, [email, password], (err, user) => {
+    if (err) {
+      return res.status(500).json({ error: 'Server error' });
+    }
+    if (!user) {
+      return res.status(401).json({ error: 'Invalid credentials' });
+    }
+
+    res.json({ message: 'Login successful', user });
+  });
+});
