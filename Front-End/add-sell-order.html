@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Add Sell Order</title>
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
+</head>
+<body>
+    <header>
+        <h1>EcoBazaar - Add Sell Order</h1>
+        <p>Sell your products on our ethical and sustainable platform</p>
+    </header>
+    
+    <nav>
+        <a href="home.html">Home Page</a>
+        <a href="catalogue.html">Products</a>
+        <a href="profile.html">Profile</a>
+        <a href="cart.html" id="cartLink" style="display: none;">View My Cart</a>
+    </nav>
+
+    <main>
+        <h2>Enter the product details</h2>
+        <div class="container-centered">
+            <div class="auth-container">
+                <!-- Form to add a new sell order -->
+                <form id="sellOrderForm">
+                    <label for="name">Product Name:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea><br><br>
+
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <!-- Categories will be dynamically added here -->
+                    </select><br><br>
+
+                    <label for="price">Price (€):</label>
+                    <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+                    <label for="available">Quantity Available:</label>
+                    <input type="number" id="available" name="available" required><br><br>
+
+                    <!-- Hidden field for the seller ID -->
+                    <input type="hidden" id="seller_id" name="seller_id" value="">
+
+                    <button type="submit">Confirm Sell Order</button>
+                    <button type="button" onclick="window.location.href = 'catalogue.html';">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p>
+    </footer>
+    <script src="sell-order.js"></script>
+</body>
+</html>
