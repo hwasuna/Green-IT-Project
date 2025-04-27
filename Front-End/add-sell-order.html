@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define the character set as UTF-8 for proper text rendering -->
+    <meta charset="UTF-8">
+    <!-- Make the page responsive by setting the viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Title of the page displayed in the browser tab -->
+    <title>Add Sell Order</title>
+    <!-- Icon for the page displayed in the browser tab -->
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
+</head>
+<body>
+    <!-- Header Section: Contains the title and description of the page -->
+    <header>
+        <h1>EcoBazaar - Add Sell Order</h1>
+        <p>Sell your products on our ethical and sustainable platform</p>
+    </header>
+
+    <!-- Navigation Bar: Links to other pages of the website -->
+    <nav>
+        <a href="home.html">Home Page</a> <!-- Link to the homepage -->
+        <a href="catalogue.html">Products</a> <!-- Link to the product catalog -->
+        <a href="profile.html">Profile</a> <!-- Link to the user's profile -->
+        <a href="cart.html" id="cartLink" style="display: none;">View My Cart</a> <!-- Cart link (hidden initially) -->
+    </nav>
+
+    <!-- Main Section: Contains the main content of the page -->
+    <main>
+        <h2>Enter the product details</h2>
+        <div class="container-centered">
+            <!-- Container for the form to add a new sell order -->
+            <div class="auth-container">
+                <!-- Form to submit a new product for sale -->
+                <form id="sellOrderForm">
+                    <!-- Product name input field -->
+                    <label for="name">Product Name:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+
+                    <!-- Product description input field -->
+                    <label for="description">Description:</label>
+                    <textarea id="description" name="description" required></textarea><br><br>
+
+                    <!-- Category selection dropdown, categories will be dynamically added -->
+                    <label for="category">Category:</label>
+                    <select id="category" name="category" required>
+                        <!-- Categories will be dynamically inserted here -->
+                    </select><br><br>
+
+                    <!-- Price input field in Euros -->
+                    <label for="price">Price (€):</label>
+                    <input type="number" id="price" name="price" step="0.01" required><br><br>
+
+                    <!-- Quantity available input field -->
+                    <label for="available">Quantity Available:</label>
+                    <input type="number" id="available" name="available" required><br><br>
+
+                    <!-- Hidden field for the seller's ID -->
+                    <input type="hidden" id="seller_id" name="seller_id" value="">
+
+                    <!-- Submit button to confirm the sell order and navigate to the catalogue -->
+                    <button type="submit" onclick="window.location.href='catalogue.html';">Confirm Sell Order</button>
+                    <!-- Button to cancel the form and navigate to the catalogue -->
+                    <button type="button" onclick="window.location.href = 'catalogue.html';">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section: Contains copyright information -->
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript files for handling the functionality of the form -->
+    <script src="sell-order.js"></script> <!-- Handles the sell order form actions -->
+    <script src="catalogue.js"></script> <!-- Handles catalog page functionality -->
+</body>
+</html>

@@ -1,0 +1,214 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #2e8b57, #3cb371);
+    color: white;
+    padding: 2em 1em;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, #2e8b57, #3cb371);
+    color: white;
+    padding: 1.5em;
+    text-align: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    margin-top: 4em;
+    box-shadow: 0 -8px 20px rgba(0,0,0,0.2);
+}
+
+/* Navigation */
+nav {
+    background-color: #3cb371;
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+nav a:hover {
+    color: #d0f0c0;
+    transform: scale(1.1);
+}
+
+/* Container */
+.container, .container-centered {
+    max-width: 1200px;
+    margin: 3em auto;
+    padding: 2em;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeIn 1.5s ease;
+}
+
+/* Sections */
+section {
+    padding: 3em;
+    background: white;
+    margin: 2em auto;
+    width: 80%;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+    animation: floatUp 1.5s ease;
+}
+
+/* Product and Cart Items */
+.product, .cart-item, .product-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5em;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Added lively text colors to product cards */
+.product h3, .product-card h3 {
+    color: #e94e77; /* vibrant pinkish color for product titles */
+}
+
+.product p, .cart-item p {
+    color: #555; /* dark grey for better readability */
+}
+
+.product:hover, .cart-item:hover, .product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+}
+
+/* Buttons */
+button, .button, .btn {
+    padding: 0.75em 1.5em;
+    background-color: #2e8b57;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+button:hover, .button:hover, .btn:hover {
+    background-color: #246b47;
+    transform: translateY(-3px);
+}
+
+/* Auth Container */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4em 1em;
+    background: #f4f4f4;
+}
+
+.auth-box {
+    background: white;
+    padding: 2em;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 400px;
+    animation: fadeIn 2s ease;
+}
+
+/* Inputs */
+.input-group {
+    margin-bottom: 1.5em;
+}
+
+.input-group label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+    display: block;
+    color: #2e8b57; /* color for label */
+}
+
+.input-group input {
+    width: 100%;
+    padding: 0.75em;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+}
+
+/* Links */
+a {
+    color: #2e8b57;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #246b47;
+    text-decoration: underline;
+}
+
+/* Catalogue Grid */
+.catalogue-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 40px;
+    padding: 3em;
+}
+
+/* Added color to the product titles in the catalogue */
+.product-card h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: #e94e77; /* vibrant pinkish color */
+}
+
+/* Cart Summary */
+.cart-summary {
+    margin-top: 2em;
+    text-align: right;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #2e8b57; /* color for cart summary */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    0% { opacity: 0; transform: scale(0.95); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% { opacity: 0; transform: translateY(50px); }
+    100% { opacity: 1; transform: translateY(0); }
+}

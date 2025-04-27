@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Define the character set as UTF-8 for proper text rendering -->
+    <meta charset="UTF-8">
+    <!-- Make the page responsive by setting the viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Link to the external CSS file for styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Title of the page displayed in the browser tab -->
+    <title>My Cart</title>
+    <!-- Icon for the page displayed in the browser tab -->
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
+</head>
+<body>
+
+    <!-- Header Section: Contains the title and description of the page -->
+    <header>
+        <h1>EcoBazaar - My Cart</h1>
+        <p>Your ethical and sustainable e-commerce platform</p>
+    </header>
+
+    <!-- Navigation Bar: Links to other pages of the website -->
+    <nav>
+        <a href="home.html">Home</a> <!-- Link to the homepage -->
+        <a href="catalogue.html">Products</a> <!-- Link to the product catalog -->
+        <a href="profile.html">Profile</a> <!-- Link to the user's profile -->
+        <a href="cart.html" id="cartLink" style="display: none;">View My Cart</a> <!-- Cart link (hidden initially) -->
+    </nav>
+
+    <!-- Main Section: Contains the main content of the page -->
+    <main>
+        <div class="container-centered">
+            <!-- Cart Container: Displays the cart content and summary -->
+            <div class="cart-container">
+                <h2>Your Cart</h2>
+                <!-- Cart Items Section: Where the added products will be dynamically displayed -->
+                <div id="cartItems">
+                    <!-- The added products will be inserted here by JavaScript -->
+                </div>
+
+                <!-- Cart Summary Section: Displays the total number of items and total price -->
+                <div id="cartSummary">
+                    <p><strong>Total items:</strong> <span id="totalItems">0</span></p>
+                    <p><strong>Total price:</strong> <span id="totalPrice">0</span> €</p>
+                    <!-- Checkout button to proceed with the purchase -->
+                    <button id="checkoutBtn" class="btn">Checkout</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Section: Contains copyright information -->
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p>
+    </footer>
+
+    <!-- JavaScript files for cart functionality and product catalog -->
+    <script src="cart.js"></script> <!-- Handles cart actions -->
+    <script src="catalogue.js"></script> <!-- Handles product catalog actions -->
+</body>
+</html>

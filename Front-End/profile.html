@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS file for styling -->
+    <title>Profile</title>
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" /> <!-- Favicon -->
+</head>
+<body>
+    <header>
+        <h1>EcoBazaar</h1> <!-- Website title -->
+        <p>Your ethical and sustainable e-commerce platform</p> <!-- Tagline -->
+    </header>
+
+    <nav>
+        <!-- Navigation links to different pages -->
+        <a href="home.html">Home</a>
+        <a href="catalogue.html">Products</a>
+        <a href="profile.html">Profile</a>
+        <a href="cart.html" id="cartLink" style="display: none;">View My Cart</a> <!-- Cart link, initially hidden -->
+    </nav>
+
+    <div class="container-centered">
+        <div class="auth-container">
+            <!-- Profile Information Display -->
+            <div class="auth-box" id="profileBox" style="display: none;">
+                <h2>Your Profile</h2>
+                <p><strong>Username:</strong> <span id="username"></span></p> <!-- Display username -->
+                <p><strong>Email:</strong> <span id="email"></span></p> <!-- Display email -->
+                
+                <!-- Section to display the user's products -->
+                <div id="userProducts" style="display: none;">
+                    <h3>Your Products</h3>
+                    <ul id="productsList"></ul> <!-- List of products -->
+                </div>
+
+                <button id="logoutBtn">Logout</button> <!-- Logout button -->
+            </div>
+
+            <!-- Login form -->
+            <div class="auth-box" id="loginBox">
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="loginEmail">Email</label>
+                        <input type="email" id="loginEmail" placeholder="Enter your email" required> <!-- Email input -->
+                    </div>
+                    <div class="input-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" placeholder="Enter your password" required> <!-- Password input -->
+                    </div>
+                    <button type="submit" class="btn">Login</button> <!-- Submit button for login -->
+                    <p>Don't have an account yet? <a href="javascript:void(0)" onclick="toggleForm('signup')">Sign up</a></p> <!-- Link to sign up form -->
+                </form>
+            </div>
+
+            <!-- Signup form -->
+            <div class="auth-box" id="signupBox" style="display: none;">
+                <h2>Sign Up</h2>
+                <form id="signupForm">
+                    <div class="input-group">
+                        <label for="signupEmail">Email</label>
+                        <input type="email" id="signupEmail" placeholder="Enter your email" required> <!-- Email input -->
+                    </div>
+                    <div class="input-group">
+                        <label for="signupUsername">Username</label>
+                        <input type="text" id="signupUsername" placeholder="Choose a username" required> <!-- Username input -->
+                    </div>
+                    <div class="input-group">
+                        <label for="signupPassword">Password</label>
+                        <input type="password" id="signupPassword" placeholder="Choose a password" required> <!-- Password input -->
+                    </div>
+                    <button type="submit" class="btn">Sign Up</button> <!-- Submit button for sign up -->
+                    <p>Already have an account? <a href="javascript:void(0)" onclick="toggleForm('login')">Log in</a></p> <!-- Link to login form -->
+                </form>
+            </div>
+        </div>
+    </div> 
+
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p> <!-- Footer content -->
+    </footer>
+
+    <script src="script.js"></script> <!-- Link to external JavaScript file for profile functionality -->
+    <script src="catalogue.js"></script> <!-- Link to external JavaScript file for catalogue functionality -->
+
+</body>
+</html>

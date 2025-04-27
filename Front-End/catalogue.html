@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character set and responsiveness -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Link to external stylesheet for styling the page -->
+    <link rel="stylesheet" href="style.css">
+    <title>Catalog</title>
+
+    <!-- Set the icon of the webpage (favicon) -->
+    <link rel="icon" href="/assets/logo eco green it.png" type="image/png" />
+</head>
+<body>
+
+    <!-- Header section that introduces the site -->
+    <header>
+        <h1>EcoBazaar - Product Catalog</h1>
+        <p>Your ethical and sustainable e-commerce platform</p>
+    </header>
+    
+    <!-- Navigation bar with links to different pages and an 'Add Sell Order' button -->
+    <nav>
+        <a href="home.html">Home Page</a> <!-- Link to the home page -->
+        <a href="catalogue.html">Products</a> <!-- Link to the product catalog -->
+        <a href="profile.html">Profile</a> <!-- Link to user profile page -->
+        <a href="cart.html" id="cartLink" style="display: none;">View My Cart</a> <!-- Link to the cart, hidden initially -->
+        
+        <!-- Button to add a new sell order, only shown if the user is a seller -->
+        <button id="addSellOrderBtn" onclick="window.location.href = '/Front-End/add-sell-order.html'">Add Sell Order</button>
+    </nav>
+
+    <!-- Main section where product listings will appear -->
+    <main>
+        <div class="products-list"> 
+            <!-- Products will be injected dynamically here via JavaScript -->
+        </div>
+    </main>
+    
+    <!-- Link to external JS file for the product catalog functionality -->
+    <script src="catalogue.js"></script>
+
+    <!-- Footer section with copyright info -->
+    <footer>
+        <p>&copy; 2025 EcoBazaar - All rights reserved</p>
+    </footer>
+
+</body>
+</html>
