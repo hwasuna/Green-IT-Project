@@ -14,7 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 // Defining a port for the app
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Importing the products endpoint from products.js
 import productsRoutes from './routes/products.js';
