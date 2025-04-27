@@ -70,7 +70,8 @@ router.post('/login', (req, res) => {
       user: {
           id: user.id,
           email: user.email,
-          username: user.username
+          username: user.username,
+          role: user.role
       }
   });
   
