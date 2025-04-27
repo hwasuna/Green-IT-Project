@@ -1,31 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Check if user is logged in by getting user data from localStorage
     const userConnected = JSON.parse(localStorage.getItem('user'));
     if (userConnected) {
+        // If the user is logged in, show the cart link
         const cartLink = document.getElementById('cartLink');
         if (cartLink) {
             cartLink.style.display = 'inline-block';
         }
     }
-  
+
+    // Get the product list container from the DOM
     const productList = document.querySelector('.products-list');
-  
-    // 🔥 Only fetch products if productList exists
+
+    // Fetch products only if the productList element exists
     if (productList) {
         fetch('http://localhost:3000/api/products')
-            .then(response => response.json())
+            .then(response => response.json()) // Parse the JSON response
             .then(products => {
                 if (products.length === 0) {
-                    productList.innerHTML = '<p>No products available yet.</p>';
+                    productList.innerHTML = '<p>No products available yet.</p>'; // Show message if no products
                     return;
                 }
-  
+
+                // Check if the user is an admin
                 const user = JSON.parse(localStorage.getItem('user'));
-                const isAdmin = user?.role === 'admin';  // Check if the logged-in user is an admin
-  
+                const isAdmin = user?.role === 'admin';
+
+                // Loop through each product and create a div to display its details
                 products.forEach(product => {
                     const div = document.createElement('div');
                     div.classList.add('product');
-  
+
                     div.innerHTML = `
                         <h3>${product.name}</h3>
                         <p><strong>Category:</strong> ${product.category}</p>
@@ -48,24 +53,23 @@ document.addEventListener('DOMContentLoaded', () => {
                             ` : ''
                         }
                     `;
-  
                     productList.appendChild(div);
                 });
             })
             .catch(error => {
-                console.error('Error fetching products:', error);
+                console.error('Error fetching products:', error); // Log any errors
             });
     }
-  
-    // ➔ One event listener for all actions
+
+    // Event delegation: single event listener for all actions
     document.addEventListener('click', (e) => {
-        // ➔ Handle + buttons
+        // Increase quantity when the "+" button is clicked
         if (e.target.classList.contains('increase-qty')) {
             const qtySpan = e.target.parentElement.querySelector('.quantity');
             qtySpan.textContent = parseInt(qtySpan.textContent) + 1;
         }
-  
-        // ➔ Handle - buttons
+
+        // Decrease quantity when the "-" button is clicked
         if (e.target.classList.contains('decrease-qty')) {
             const qtySpan = e.target.parentElement.querySelector('.quantity');
             const currentQty = parseInt(qtySpan.textContent);
@@ -73,43 +77,47 @@ document.addEventListener('DOMContentLoaded', () => {
                 qtySpan.textContent = currentQty - 1;
             }
         }
-  
-        // ➔ Add to cart
+
+        // Add product to cart when the "Add to Cart" button is clicked
         if (e.target.classList.contains('add-to-cart')) {
             const id = e.target.getAttribute('data-id');
             const name = e.target.getAttribute('data-name');
             const price = parseFloat(e.target.getAttribute('data-price'));
-  
+
             const quantitySelector = e.target.previousElementSibling;
             const quantity = parseInt(quantitySelector.querySelector('.quantity').textContent);
-  
+
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
-  
+
+            // Check if the product is already in the cart
             const existingProduct = cart.find(item => item.id === id);
-  
+
             if (existingProduct) {
-                existingProduct.quantity += quantity;
+                existingProduct.quantity += quantity; // Update the quantity if already in cart
             } else {
-                cart.push({ id, name, price, quantity });
+                cart.push({ id, name, price, quantity }); // Add new product to the cart
             }
-  
+
+            // Reset quantity back to 1
             quantitySelector.querySelector('.quantity').textContent = '1';
-  
-            localStorage.setItem('cart', JSON.stringify(cart));
-  
-            alert(`${quantity} x ${name} added to cart!`);
+
+            localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart to localStorage
+
+            alert(`${quantity} x ${name} added to cart!`); // Show a confirmation alert
         }
-  
-        // ➔ Handle delete product (for admin users)
+
+        // Admin only: Delete product when the "Delete" button is clicked
         if (e.target.classList.contains('delete-product')) {
             const productId = e.target.getAttribute('data-id');
             const token = localStorage.getItem('token');
-  
+
+            // Check if the user is logged in (by checking token)
             if (!token) {
                 alert('You must be logged in to delete a product.');
                 return;
             }
-  
+
+            // Make DELETE request to remove the product from the database
             fetch(`http://localhost:3000/api/products/${productId}`, {
                 method: 'DELETE',
                 headers: {
@@ -130,37 +138,35 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
-  });
-  
-  // Product add form
-  document.getElementById('productForm')?.addEventListener('submit', function (e) {
-    e.preventDefault();
-  
-    console.log('Submit button clicked');
-  
-    const product = {
-        name: document.getElementById('name').value,
-        description: document.getElementById('description').value,
-        category: document.getElementById('category').value,
-        price: parseFloat(document.getElementById('price').value),
-        seller_id: document.getElementById('seller_id').value
-    };
-  
-    fetch('http://localhost:3000/api/products', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(product)
-    })
+
+    // Handle product addition through a form submission (for admin only)
+    document.getElementById('productForm')?.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent default form submission
+
+        const product = {
+            name: document.getElementById('name').value,
+            description: document.getElementById('description').value,
+            category: document.getElementById('category').value,
+            price: parseFloat(document.getElementById('price').value),
+            seller_id: document.getElementById('seller_id').value
+        };
+
+        // Send the new product data to the backend API
+        fetch('http://localhost:3000/api/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product) // Send the product data as JSON
+        })
         .then(res => res.json())
         .then(data => {
             console.log('Product added:', data);
-            alert('Product added!');
+            alert('Product added!'); // Show success alert
         })
         .catch(err => {
             console.error('Error: ', err);
-            alert('Something went wrong');
+            alert('Something went wrong'); // Show error alert
         });
-  });
-  
+    });
+});
