@@ -135,7 +135,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('loginBox').style.display = 'none';
         document.getElementById('signupBox').style.display = 'none';
 
-        console.log(token, username, email);
 
         // Fetch the products for the logged-in user
         try {
