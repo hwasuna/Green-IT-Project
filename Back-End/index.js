@@ -23,6 +23,8 @@ app.use('/api/products', productsRoutes);
 import userRoutes from './routes/user.js';
 app.use('/api/users', userRoutes)
 
+
+
 // Testing the communication between the front-end and back-end
 app.get('/api/test', (req, res)=>{
     res.json({message: "Ecobazaar back-end is working"});
