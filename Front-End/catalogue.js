@@ -7,46 +7,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
   }
 
-  fetch('http://localhost:3000/api/products')
-      .then(response => response.json())
-      .then(products => {
-          const productList = document.querySelector('.products-list');
+  const productList = document.querySelector('.products-list');
 
-          if (products.length === 0) {
-              productList.innerHTML = '<p>No products available yet.</p>';
-              return;
-          }
+  // 🔥 Only fetch products if productList exists
+  if (productList) {
+      fetch('http://localhost:3000/api/products')
+          .then(response => response.json())
+          .then(products => {
+              if (products.length === 0) {
+                  productList.innerHTML = '<p>No products available yet.</p>';
+                  return;
+              }
 
-          const user = JSON.parse(localStorage.getItem('user'));
+              const user = JSON.parse(localStorage.getItem('user'));
 
-          products.forEach(product => {
-              const div = document.createElement('div');
-              div.classList.add('product');
+              products.forEach(product => {
+                  const div = document.createElement('div');
+                  div.classList.add('product');
 
-              div.innerHTML = `
-                  <h3>${product.name}</h3>
-                  <p><strong>Category:</strong> ${product.category}</p>
-                  <p><strong>Description:</strong> ${product.description}</p>
-                  <p><strong>Price:</strong> $${product.price}</p>
-                  ${
-                      user ? `
-                          <div class="quantity-control">
-                              <button class="decrease-qty">-</button>
-                              <span class="quantity">1</span>
-                              <button class="increase-qty">+</button>
-                          </div>
-                          <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
-                      `
-                      : `<p><em>Login to add to cart</em></p>`
-                  }
-              `;
+                  div.innerHTML = `
+                      <h3>${product.name}</h3>
+                      <p><strong>Category:</strong> ${product.category}</p>
+                      <p><strong>Description:</strong> ${product.description}</p>
+                      <p><strong>Price:</strong> $${product.price}</p>
+                      ${
+                          user ? `
+                              <div class="quantity-control">
+                                  <button class="decrease-qty">-</button>
+                                  <span class="quantity">1</span>
+                                  <button class="increase-qty">+</button>
+                              </div>
+                              <button class="add-to-cart" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">Add to Cart</button>
+                          `
+                          : `<p><em>Login to add to cart</em></p>`
+                      }
+                  `;
 
-              productList.appendChild(div);
+                  productList.appendChild(div);
+              });
+          })
+          .catch(error => {
+              console.error('Error fetching products:', error);
           });
-      })
-      .catch(error => {
-          console.error('Error fetching products:', error);
-      });
+  }
 
   // ➔ One event listener for all actions
   document.addEventListener('click', (e) => {
@@ -71,19 +74,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const name = e.target.getAttribute('data-name');
           const price = parseFloat(e.target.getAttribute('data-price'));
 
-          // ✨ Get the associated quantity for the product
           const quantitySelector = e.target.previousElementSibling;
           const quantity = parseInt(quantitySelector.querySelector('.quantity').textContent);
 
           let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-          // Check if product is already in the cart
           const existingProduct = cart.find(item => item.id === id);
 
           if (existingProduct) {
-              existingProduct.quantity += quantity; // Add to existing one
+              existingProduct.quantity += quantity;
           } else {
-              cart.push({ id, name, price, quantity }); // Otherwise, add new product
+              cart.push({ id, name, price, quantity });
           }
 
           quantitySelector.querySelector('.quantity').textContent = '1';
