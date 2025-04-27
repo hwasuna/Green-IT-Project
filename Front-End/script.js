@@ -158,6 +158,34 @@ document.addEventListener('DOMContentLoaded', async () => {
                     products.forEach(product => {
                         const listItem = document.createElement('li');
                         listItem.textContent = `${product.name} - ${product.price} €`;
+                                                // Create delete button
+                        const deleteButton = document.createElement('button');
+                        deleteButton.textContent = 'Delete';
+                        deleteButton.addEventListener('click', async () => {
+                            // Send request to delete the product
+                            try {
+                                const deleteResponse = await fetch(`http://localhost:3000/api/products/${product.id}`, {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'Authorization': `Bearer ${token}`
+                                    }
+                                });
+
+                                if (deleteResponse.ok) {
+                                    // Remove product from the list in the DOM
+                                    listItem.remove();
+                                    alert(`Product "${product.name}" deleted successfully.`);
+                                } else {
+                                    alert('Failed to delete product');
+                                }
+                            } catch (error) {
+                                console.error('Network error:', error);
+                                alert('Error deleting product');
+                            }
+                        });
+
+                        // Append the delete button to the list item
+                        listItem.appendChild(deleteButton);
                         productsList.appendChild(listItem);
                     });
                 } else {
