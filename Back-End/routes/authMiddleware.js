@@ -1,6 +1,6 @@
 import jwt from 'jsonwebtoken';
 
-const SECRET_KEY = process.env.SECRET_KEY || "vraiment_pas_un_secret_mdr";
+const SECRET_KEY = process.env.SECRET_KEY || "not_really_a_secret";
 
 // Middleware to check for a valid JWT token
 const authMiddleware = (req, res, next) => {
